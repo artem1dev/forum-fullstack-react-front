@@ -7,7 +7,7 @@ function App() {
   const allovedRoles = ["user", "admin"];
   return (
     <>
-      <div className="App relative min-h-screen">
+      <div className="App">
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route element={<RequreAuth allowedRoles={allovedRoles} />}></Route>
