@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import { Translation } from "react-i18next";
 import { useEffect, useState } from "react";
 import { Header } from "./Header";
-import Footer from './Footer';
+import Footer from "./Footer";
 
 const Layout = () => {
   const userTheme = localStorage.getItem("theme");
@@ -14,11 +14,12 @@ const Layout = () => {
   return (
     <div className={`App w-full ${theme}`}>
       <Translation>{(t) => <Header t={t}> </Header>}</Translation>
-
       <main>
         <Outlet />
       </main>
-      <footer><Footer /></footer>
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
 };
