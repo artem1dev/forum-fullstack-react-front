@@ -13,8 +13,15 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 
+const handleLogout = () => {
+  localStorage.removeItem("autorized");
+  window.location.reload();
+};
 const pages = ["Products", "Pricing", "Blog"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const settings = [
+  { name: "Profile", href: "/my-profile" },
+  { name: "Logout", onclick: handleLogout },
+];
 const authPages = [
   { name: "Sign Up", href: "/sign-up" },
   { name: "Sign In", href: "/sign-in" },
@@ -27,7 +34,7 @@ export const Header = ({ t }: IProps) => {
   const { currentUser } = JSON.parse(
     localStorage.getItem("autorized") as string
   );
-  console.log(currentUser, "currentUser")
+  console.log(currentUser, "currentUser");
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -142,11 +149,15 @@ export const Header = ({ t }: IProps) => {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            {!currentUser || currentUser === "guest"  ? (
+            {!currentUser || currentUser === "guest" ? (
               <>
                 {authPages.map((authPage) => (
                   <MenuItem key={authPage.name} onClick={handleCloseNavMenu}>
-                    <Typography component="a" href={authPage.href} textAlign="center">
+                    <Typography
+                      component="a"
+                      href={authPage.href}
+                      textAlign="center"
+                    >
                       {t(authPage.name)}
                     </Typography>
                   </MenuItem>
@@ -179,8 +190,8 @@ export const Header = ({ t }: IProps) => {
                   onClose={handleCloseUserMenu}
                 >
                   {settings.map((setting) => (
-                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                      <Typography textAlign="center">{setting}</Typography>
+                    <MenuItem key={setting.name} onClick={setting?.onclick ? setting.onclick : handleCloseUserMenu}>
+                      <Typography component={'a'} href={setting?.href ? setting.href : '/' } textAlign="center">{setting.name}</Typography>
                     </MenuItem>
                   ))}
                 </Menu>
