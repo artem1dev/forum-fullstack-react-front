@@ -8,20 +8,20 @@ import i18n from "./i18next/i18n.ts";
 import { createTheme } from "@mui/material";
 import { ThemeProvider } from "@emotion/react";
 const darkTheme = createTheme({
-  palette: {
-    mode: "dark",
-  },
+    palette: {
+        mode: "dark",
+    },
 });
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <BrowserRouter>
-    <ThemeProvider theme={darkTheme}>
-      <I18nextProvider i18n={i18n} defaultNS={"translations"}>
-        <AuthProvider>
-          <Routes>
-            <Route path="/*" element={<App />} />
-          </Routes>
-        </AuthProvider>
-      </I18nextProvider>
-    </ThemeProvider>
-  </BrowserRouter>
+    <BrowserRouter>
+        <ThemeProvider theme={darkTheme}>
+            <I18nextProvider i18n={i18n} defaultNS={"translations"}>
+                <AuthProvider>
+                    <Routes>
+                        <Route path="/*" element={<App />} />
+                    </Routes>
+                </AuthProvider>
+            </I18nextProvider>
+        </ThemeProvider>
+    </BrowserRouter>,
 );

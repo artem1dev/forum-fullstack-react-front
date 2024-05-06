@@ -7,20 +7,17 @@ export type TLanguages = "en" | "uk";
 
 export const fallbackLanguages: TLanguages[] = ["en", "uk"];
 
-i18n
-  .use(Backend)
-  .use(LanguageDetector)
-  .use(initReactI18next)
-  .init({
-    fallbackLng: fallbackLanguages,
-    debug: false,
-    interpolation: {
-      escapeValue: false,
-    },
-    ns: [
-      "translations"
-    ],
-    returnObjects: true,
-  });
+i18n.use(Backend)
+    .use(LanguageDetector)
+    .use(initReactI18next)
+    .init({
+        fallbackLng: fallbackLanguages,
+        debug: false,
+        interpolation: {
+            escapeValue: false,
+        },
+        ns: ["translations"],
+        returnObjects: true,
+    });
 
 export default i18n;
