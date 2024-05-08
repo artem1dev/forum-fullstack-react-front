@@ -1,8 +1,5 @@
 import { Outlet, Link } from "react-router-dom";
 import React, { useContext } from "react";
-import axios from "axios";
-import routes from "../routes.js";
-import { toast } from "react-toastify";
 import Context from "../context/Context.js";
 
 export default (props) => {

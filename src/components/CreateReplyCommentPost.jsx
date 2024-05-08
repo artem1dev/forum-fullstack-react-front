@@ -5,7 +5,6 @@ import { useFormik } from "formik";
 import { toast } from "react-toastify";
 import routes from "../routes.js";
 import axios from "axios";
-import { actions } from "./slices/commentSlice.js";
 
 const validationComment = yup.object({
     content: yup.string().required("comment can't be empty").trim(),
