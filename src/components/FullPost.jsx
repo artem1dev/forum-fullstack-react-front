@@ -137,7 +137,7 @@ export default function FullPost() {
                 </div>
                 <h2>Comments</h2>
                 <hr className="bg-white" />
-                <CreateCommentPost postId={postId} />
+                <CreateCommentPost postId={postId}/>
                 <div className="FullPostComment">
                     <ul>
                         {post?.comments.map((comment) => {
@@ -148,6 +148,7 @@ export default function FullPost() {
                                         comment={comment}
                                         users={comment.login}
                                         token={token}
+                                        postId={postId}
                                     />
                                 </li>
                             );
