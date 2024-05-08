@@ -4,6 +4,7 @@ export default {
     registerPath: () => [apiUrl, "auth", "register"].join("/"),
     authPath: () => [apiUrl, "auth", "login"].join("/"),
     getUserById: (id) => [apiUrl, "v1.1", "users", id].join("/"),
+    deleteUserById: (id) => [apiUrl, "v1.1", "users", id].join("/"),
     getAllUsers: () => [apiUrl, "users"].join("/"),
     allUser: (token) => [apiUrl, "users", token].join("/"),
     allPost: () => [apiUrl, "v1.1", "posts"].join("/"),

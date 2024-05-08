@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Post from "./Post.jsx";
 import axios from "axios";
 import routes from "../routes.js";
 
 export default function Profile() {
-    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const { id } = useParams();
     const [user, setUser] = useState(null);
     const [userPosts, setUserPosts] = useState(null);
@@ -47,6 +46,24 @@ export default function Profile() {
                                 </div>
                             </div>
                         </div>
+                        {currentUser.userData.userId === id ? (
+                            <button onClick={async () => {
+                                    const response = await axios.delete(
+                                        routes.deleteUserById(id),
+                                        {
+                                            headers: {
+                                                authorization: token,
+                                            },
+                                        },
+                                    );
+                                    localStorage.setItem("currentUser", JSON.stringify({ currentUser: "guest" }));
+                                    navigate("/");
+                                    window.location.reload();
+                                }}
+                                className="Submit_btn">
+                                    Delete user
+                                </button>
+                            ) : ""}
                     </div>
                 </div>
             </div>
